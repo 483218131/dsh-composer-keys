@@ -7,11 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Clear shortcut is now **Ctrl+C only** on all platforms; macOS `Cmd+C` remains the system Copy.
+
 ## [0.1.0] - 2025-08-19
 
 ### Added
 
 - Arrow Up/Down to cycle through historical user messages in the chat composer.
-- Ctrl+C (Cmd+C on macOS) to clear the composer when no text is selected.
+- Ctrl+C to clear the composer when no text is selected (Windows and macOS identical).
 - Client-only plugin registered in the `conversation.composer.dock` slot.
 - `cordis.patch.yml` bundle patch for `dsh plugin` install.

@@ -28,7 +28,7 @@ Type faster, navigate history with pure keyboard. No mouse needed.
   restores whatever you had typed before you started navigating.
 - **Ctrl+C** only clears when the composer has content and no text is selected —
   if you have selected text, the browser's native Copy takes precedence.
-- Works on both **Ctrl** (Windows/Linux) and **⌘ Command** (macOS).
+- Uses **Ctrl+C** only, identical on Windows and macOS (on macOS, `Cmd+C` stays the system Copy).
 
 ---
 
