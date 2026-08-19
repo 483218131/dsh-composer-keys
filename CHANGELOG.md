@@ -7,9 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-08-19
+
+### Fixed
+
+- Host plugin now exports a named `apply` function so Cordis can load it (`invalid plugin ... received object`).
+- Client half also exports named `apply` / `name` instead of `export default`.
+
 ### Changed
 
-- Clear shortcut is now **Ctrl+C only** on all platforms; macOS `Cmd+C` remains the system Copy.
+- Clear shortcut is **Ctrl+C only** on all platforms; macOS `Cmd+C` remains the system Copy.
 
 ## [0.1.0] - 2025-08-19
 

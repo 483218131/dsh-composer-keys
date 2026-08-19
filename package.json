@@ -1,6 +1,6 @@
 {
   "name": "dsh-composer-keys",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Keyboard shortcuts for the DSH chat composer: Arrow Up/Down to cycle through historical user messages, Ctrl+C to clear input.",
   "type": "module",
   "main": "lib/index.js",
