@@ -1,0 +1,6 @@
+# dsh-composer-keys: keyboard shortcuts for the DSH chat composer.
+# Arrow Up/Down to cycle through historical user messages, Ctrl+C to clear input.
+# Client-only plugin — no host side.
+- insert:
+    - id: composer-keys
+      name: 'dsh-composer-keys'
