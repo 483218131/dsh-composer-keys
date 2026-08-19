@@ -1,39 +1,97 @@
-# dsh-composer-keys
+# dsh-composer-keys ⌨️
 
-Keyboard shortcuts for the DSH chat composer.
+Keyboard shortcuts for the [DeepSeek Harness](https://github.com/deepseek-ai/dsh) (DSH) Web chat composer.
 
-↑ ↓ to cycle through historical user messages, Ctrl+C to clear input.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Version](https://img.shields.io/badge/dsh--plugin-v0.1.0-green.svg)
+![Platform](https://img.shields.io/badge/platform-web-orange.svg)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-## Features
+Type faster, navigate history with pure keyboard. No mouse needed.
+
+---
+
+## ✨ Features
 
 | Shortcut | Action |
 |----------|--------|
-| **↑ Arrow Up** | Fill the composer with the previous user message from history |
-| **↓ Arrow Down** | Move to the next user message; at the end, restore the original input |
-| **Ctrl+C** | Clear the composer when no text is selected |
+| **↑** Arrow Up | Fill the composer with the previous user message from history |
+| **↓** Arrow Down | Move to the next user message; at the end, restore your original input |
+| **Ctrl+C** | Clear the composer when no text is selected (avoids conflict with Copy) |
 
-## Install
+### Behavior details
+
+- **History cycling** follows shell-style semantics: press ↑ to walk backwards through
+  your previously sent messages; press ↓ to walk forward again; at the newest end it
+  restores whatever you had typed before you started navigating.
+- **Ctrl+C** only clears when the composer has content and no text is selected —
+  if you have selected text, the browser's native Copy takes precedence.
+- Works on both **Ctrl** (Windows/Linux) and **⌘ Command** (macOS).
+
+---
+
+## 📦 Install
+
+### From GitHub
 
 ```bash
-dsh plugin add dsh-composer-keys
+dsh plugin --profile web add https://github.com/kexin8/dsh-composer-keys.git
 ```
 
-Or link a local checkout:
+### From a local checkout
 
 ```bash
-dsh plugin --profile web add link:~/code/dsh-composer-keys
+git clone https://github.com/kexin8/dsh-composer-keys.git
+dsh plugin --profile web add link:~/dsh-composer-keys
 ```
 
-## How it works
+### Via npm (when published)
 
-The plugin registers an invisible component in the `conversation.composer.dock` slot.
-It attaches a `keydown` listener on `document` and intercepts shortcuts when the
-composer textarea is focused.
+```bash
+npm i dsh-composer-keys
+dsh plugin --profile web add dsh-composer-keys
+```
 
-- **Arrow Up/Down**: reads user messages from the `ConversationSnapshot` and
-  calls `inputActions.setDraft()` to fill the composer.
-- **Ctrl+C**: when no text is selected, calls `setDraft('')` to clear the input.
+After installing, restart the DSH Web GUI and reload the page.
 
-## License
+---
 
-MIT
+## 🧩 How it works
+
+A client-only plugin. It registers an invisible component in the
+`conversation.composer.dock` slot (the additive, non-destructive input-region seat),
+which attaches a `keydown` listener on `document` and intercepts shortcuts only while
+the composer textarea is focused:
+
+- **Arrow Up/Down** — reads historical user messages from the live
+  `ConversationSnapshot` and fills the composer via `inputActions.setDraft()`.
+- **Ctrl+C** — calls `setDraft('')` when the input is non-empty and nothing is selected.
+
+No host process code, no persistence, no settings — pure client-side, stops cleanly
+on plugin stop/update.
+
+---
+
+## 🗂 Project structure
+
+```
+dsh-composer-keys/
+├── lib/
+│   ├── index.js        # host stub (client-only plugin)
+│   └── client.js       # client module (__ModuleLoader__ format)
+├── cordis.patch.yml    # cordis composition patch (inserts the plugin row)
+├── package.json        # dsh plugin manifest
+└── README.md
+```
+
+---
+
+## 🤝 Contributing
+
+PRs are welcome! Please make sure the plugin still works in the DSH Web GUI after
+your change. Keep the client code plain-JavaScript (no TypeScript/JSX in the shipped
+`lib/` output) and never add host-side logic unless the feature truly needs it.
+
+## 📄 License
+
+[MIT](./LICENSE)

@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  validate:
+    name: Validate plugin
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Syntax check
+        run: npm test
+
+      - name: Validate cordis.patch.yml
+        run: |
+          node -e "
+            const fs = require('fs');
+            const yaml = fs.readFileSync('cordis.patch.yml', 'utf8');
+            if (!yaml.includes('insert')) {
+              throw new Error('cordis.patch.yml missing insert directive');
+            }
+            console.log('cordis.patch.yml OK');
+          "
+
+      - name: Validate package.json dsh manifest
+        run: |
+          node -e "
+            const pkg = require('./package.json');
+            if (!pkg.dsh?.bundle?.patch) throw new Error('missing dsh.bundle.patch');
+            if (!pkg.dsh?.client?.platform) throw new Error('missing dsh.client.platform');
+            console.log('dsh manifest OK');
+          "
