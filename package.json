@@ -33,7 +33,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhengzi/dsh-composer-keys.git"
+    "url": "https://github.com/kexin8/dsh-composer-keys.git"
   },
   "files": [
     "lib",
