@@ -3,7 +3,7 @@
 [DeepSeek Harness](https://github.com/deepseek-ai/dsh)（DSH）Web 聊天输入框的键盘快捷键插件。
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/dsh--plugin-v0.1.0-green.svg)
+![Version](https://img.shields.io/badge/dsh--plugin-v0.2.0-green.svg)
 ![Platform](https://img.shields.io/badge/platform-web-orange.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
@@ -22,6 +22,8 @@
 ### 行为细节
 
 - **历史循环**遵循类 shell 语义：按 ↑ 向历史回翻，按 ↓ 向新翻；翻到最新一条后再按 ↓ 会恢复你开始翻历史之前输入的内容。
+- **级联光标移动**（#1）：多行输入时，↑/↓ 先像普通文本编辑器一样移动光标；只有当光标已位于首行（↑）或末行（↓）时才开始翻历史。单行输入与之前完全一致，直接翻历史。
+- **输入法组合期间忽略方向键**：使用中文/日文等输入法打字时，方向键不会翻历史，避免组合中的文本被历史内容覆盖。
 - **Ctrl+C** 仅在输入框有内容且未选中任何文本时清空——若选中了文本，则优先执行浏览器原生的"复制"。
 - 仅使用 **Ctrl+C** 清空，Windows 与 macOS 行为一致（macOS 下 `Cmd+C` 保留为系统"复制"）。
 

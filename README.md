@@ -5,7 +5,7 @@ Keyboard shortcuts for the [DeepSeek Harness](https://github.com/deepseek-ai/dsh
 **中文文档：[简体中文](./README.zh.md)**
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/dsh--plugin-v0.1.0-green.svg)
+![Version](https://img.shields.io/badge/dsh--plugin-v0.2.0-green.svg)
 ![Platform](https://img.shields.io/badge/platform-web-orange.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
@@ -26,6 +26,11 @@ Type faster, navigate history with pure keyboard. No mouse needed.
 - **History cycling** follows shell-style semantics: press ↑ to walk backwards through
   your previously sent messages; press ↓ to walk forward again; at the newest end it
   restores whatever you had typed before you started navigating.
+- **Cascade cursor movement** (#1): in multi-line input, ↑/↓ first move the caret like
+  a plain text editor; history cycling only starts once the caret already sits on the
+  first line (↑) or the last line (↓). Single-line input cycles history immediately.
+- Arrow keys are ignored while an **IME composition** is active (e.g. typing Chinese),
+  so composing text is never replaced by a history entry.
 - **Ctrl+C** only clears when the composer has content and no text is selected —
   if you have selected text, the browser's native Copy takes precedence.
 - Uses **Ctrl+C** only, identical on Windows and macOS (on macOS, `Cmd+C` stays the system Copy).
