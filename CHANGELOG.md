@@ -11,9 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Arrow Up/Down now cascade: in multi-line input they first move the caret like a
-  plain text editor, and history cycling only starts once the caret already sits on
-  the first (↑) / last (↓) line (closes #1). Single-line input is unchanged.
+- Arrow Up/Down now cascade: they first move the caret like a plain text editor, and
+  history cycling only starts once the caret already sits at the very start (↑) or
+  end (↓) of the input (closes #1). From mid-text the browser clamps the caret to the
+  edge first, Home/End style.
 - Arrow keys are now ignored while an IME composition is active, so typing Chinese/
   Japanese/Korean text can no longer be replaced by a history entry.
 

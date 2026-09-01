@@ -26,9 +26,10 @@ Type faster, navigate history with pure keyboard. No mouse needed.
 - **History cycling** follows shell-style semantics: press ↑ to walk backwards through
   your previously sent messages; press ↓ to walk forward again; at the newest end it
   restores whatever you had typed before you started navigating.
-- **Cascade cursor movement** (#1): in multi-line input, ↑/↓ first move the caret like
-  a plain text editor; history cycling only starts once the caret already sits on the
-  first line (↑) or the last line (↓). Single-line input cycles history immediately.
+- **Cascade cursor movement** (#1): ↑/↓ always move the caret like a plain text editor
+  first; history cycling only starts once the caret already sits at the very beginning
+  (↑) or very end (↓) of the input. From mid-text the browser clamps the caret to the
+  edge first (Home/End style), so one extra press reaches the cycling zone.
 - Arrow keys are ignored while an **IME composition** is active (e.g. typing Chinese),
   so composing text is never replaced by a history entry.
 - **Ctrl+C** only clears when the composer has content and no text is selected —
