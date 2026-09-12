@@ -10,6 +10,9 @@ dist/
 npm-debug.log*
 pnpm-debug.log*
 
+# Tool caches (playwright-cli 的 snapshot / console 落盘目录)
+.playwright-cli/
+
 # OS
 .DS_Store
 Thumbs.db

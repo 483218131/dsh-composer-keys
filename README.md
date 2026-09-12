@@ -69,11 +69,28 @@ After installing, restart the DSH Web GUI and reload the page.
 A client-only plugin. It registers an invisible component in the
 `conversation.composer.dock` slot (the additive, non-destructive input-region seat),
 which attaches a `keydown` listener on `document` and intercepts shortcuts only while
-the composer textarea is focused:
+the composer is focused:
 
-- **Arrow Up/Down** — reads historical user messages from the live
-  `ConversationSnapshot` and fills the composer via `inputActions.setDraft()`.
+- **Input element detection (both DSH versions)** — matches the official
+  `[data-composer-input]` attribute first (since DSH 0.1.5 the composer is a Lexical
+  `contenteditable`), then falls back to `<textarea>` / `<input>` (DSH 0.1.1).
+  **No hash classes are used.**
+- **Arrow Up/Down** — reads historical user messages from the official `chat` hook's
+  `ChatSnapshot.legacy.nodes` and fills the composer via `inputActions.setDraft()`.
+  Full message text is used, not the bounded preview.
+- **Caret-edge detection** — `Selection` + `Range` on `contenteditable`; `selectionStart`
+  / `selectionEnd` on `textarea`.
+- **How the cascade is kept honest** — a `capture` listener records the caret edge
+  position as it was *before* the keypress, and a `bubble` listener makes the decision
+  while respecting `defaultPrevented`. That way the official menu (e.g. the `/` command
+  menu) keeps priority, and a platform that moves the caret early cannot fool the edge test.
 - **Ctrl+C** — calls `setDraft('')` when the input is non-empty and nothing is selected.
+
+> **Compatibility**: the same code runs on DSH `0.1.1-rc.2` and `0.1.5-rc.1`. Every
+> version decision is a **capability probe**; no version numbers are hard-coded.
+> The plugin deliberately does **not** call `ctx.uiSession.provide` — DSH 0.1.5's scope
+> binding is globally merged and name-unique, so re-declaring the official `chat` /
+> `input` / `inputActions` throws and takes the whole composer slot down.
 
 No host process code, no persistence, no settings — pure client-side, stops cleanly
 on plugin stop/update.
@@ -87,8 +104,11 @@ dsh-composer-keys/
 ├── lib/
 │   ├── index.js        # host stub (client-only plugin)
 │   └── client.js       # client module (__ModuleLoader__ format)
+├── docs/
+│   └── verification-0.1.5.md   # browser assertion checklist for DSH 0.1.5
 ├── cordis.patch.yml    # cordis composition patch (inserts the plugin row)
 ├── package.json        # dsh plugin manifest
+├── HANDOFF.md          # handoff index (root cause / design / pitfalls)
 └── README.md
 ```
 
