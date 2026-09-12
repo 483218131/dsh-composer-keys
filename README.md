@@ -5,7 +5,7 @@ Keyboard shortcuts for the [DeepSeek Harness](https://github.com/deepseek-ai/dsh
 **中文文档：[简体中文](./README.zh.md)**
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/dsh--plugin-v0.2.0-green.svg)
+![Version](https://img.shields.io/badge/dsh--plugin-v0.2.1-green.svg)
 ![Platform](https://img.shields.io/badge/platform-web-orange.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 

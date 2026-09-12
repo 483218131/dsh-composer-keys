@@ -3,7 +3,7 @@
 [DeepSeek Harness](https://github.com/deepseek-ai/dsh)（DSH）Web 聊天输入框的键盘快捷键插件。
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/dsh--plugin-v0.2.0-green.svg)
+![Version](https://img.shields.io/badge/dsh--plugin-v0.2.1-green.svg)
 ![Platform](https://img.shields.io/badge/platform-web-orange.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
