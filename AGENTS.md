@@ -20,8 +20,8 @@
 # profile: C:/Users/lidadao/.dsh/profiles/web  （写入需提权）
 # 刷新浏览器（Ctrl+Shift+R）后在输入框验证：↑/↓ 翻历史、Ctrl+C 清空
 
-git -C D:/dsh-composer-keys log --oneline -5
-git -C D:/dsh-composer-keys status --short
+git -C D:/Projects/dsh-composer-keys log --oneline -5
+git -C D:/Projects/dsh-composer-keys status --short
 ```
 
 ## 3. 工程资产导航 (Context Anchors)

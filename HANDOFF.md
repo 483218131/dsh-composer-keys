@@ -98,7 +98,7 @@ ctx.uiSession.provide({ hooks: ["conversation", "input"], props: ["inputActions"
 
 ## 6. 环境与操作要点
 
-- 本仓库位置：`D:/dsh-composer-keys`（**注意：不是 `D:/AI/测试` 工作区内的项目**）
+- 本仓库位置：`D:/Projects/dsh-composer-keys`（2026-09-12 由 `D:/dsh-composer-keys` 迁入，与同族 `dsh-composer-collapse` 对齐；旧路径已删除，勿再引用）
 - profile 安装形态：`C:/Users/lidadao/.dsh/profiles/web/node_modules/dsh-composer-keys` → **符号链接**指向本目录
 - **本目录在工作区之外**：文件写入需提权（`sandbox_permissions: danger-full-access`）
 - 当前分支：`feat/arrow-cascade-cursor`，HEAD `c37e5cd`
